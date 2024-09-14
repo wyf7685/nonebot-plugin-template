@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python 调试: Nonebot2",
+      "type": "debugpy",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "bot.py",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}
