@@ -5,29 +5,18 @@ description = "Add your description here"
 authors = [{ name = "owner", email = "example@example.com" }]
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["nonebot2>=2.3.3"]
+dependencies = ["nonebot2>=2.4.0"]
 license = { text = "MIT" }
 
 [tool.uv]
-dev-dependencies = [
-    "nonebot2[fastapi]>=2.3.3",
-    "nonebot-adapter-onebot>=2.4.4",
-]
-
-[tool.black]
-line-length = 88
-target-version = ["py310"]
-include = '\.pyi?$'
-extend-exclude = '''
-'''
-
-[tool.isort]
-profile = "black"
-line_length = 88
+dev-dependencies = ["nonebot2[fastapi]>=2.4.0", "nonebot-adapter-onebot>=2.4.4"]
 
 [tool.ruff]
 line-length = 88
 target-version = "py310"
+
+[tool.ruff.format]
+line-ending = "lf"
 
 [tool.ruff.lint]
 select = [
@@ -80,13 +69,38 @@ ignore = [
     "RUF001", # ambiguous-unicode-character-string
     "RUF002", # ambiguous-unicode-character-docstring
     "RUF003", # ambiguous-unicode-character-comment
-    "ANN101", # missing-type-self
-    "ANN102", # missing-type-cls
+    "ANN401", # any-type
     "TRY003", # raise-vanilla-args
+    "TRY301", # raise-within-try
     "EM102",  # f-string-in-exception
     "COM812", # missing-trailing-comma
     "ERA001", # commented-out-code
+    "EM101",  # raw-string-in-exception
+    "TID252", # relative-imports
+    "ISC001", # single-line-implicit-string-concatenation
+    "DTZ005", # call-datetime-now-without-tzinfo
+    "S311",   # suspicious-non-cryptographic-random-usage
+    "PGH003", # blanket-type-ignore
+    "N818",   # error-suffix-on-exception-name
+    "PYI041", # redundant-numeric-union
+    "S101",   # assert
+    "B911",   # batched-without-explicit-strict
+    "PGH004", # blanket-noqa
 ]
+
+[tool.ruff.lint.flake8-builtins]
+builtins-ignorelist = ["id", "dir"]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.isort]
+known-first-party = ["nonebot_plugin_template"]
+extra-standard-library = ["typing_extensions"]
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
 
 [tool.pyright]
 pythonVersion = "3.10"

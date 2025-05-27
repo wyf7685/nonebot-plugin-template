@@ -16,23 +16,23 @@ _✨ NoneBot 插件简单描述 ✨_
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![isort](https://img.shields.io/badge/%20imports-isort-%231674b1)](https://pycqa.github.io/isort/)
-[![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![pyright](https://img.shields.io/badge/types-pyright-797952.svg?logo=python&logoColor=edb641)](https://github.com/Microsoft/pyright)
+[![basedpyright - checked](https://img.shields.io/badge/basedpyright-checked-42b983)](https://docs.basedpyright.com)
 
 [![pre-commit](https://results.pre-commit.ci/badge/github/owner/nonebot-plugin-template/master.svg)](https://results.pre-commit.ci/latest/github/owner/nonebot-plugin-template/master)
-[![pyright](https://github.com/owner/nonebot-plugin-template/actions/workflows/pyright.yml/badge.svg?branch=master&event=push)](https://github.com/owner/nonebot-plugin-template/actions/workflows/pyright.yml)
+[![CI](https://github.com/owner/nonebot-plugin-template/actions/workflows/pyright.yml/badge.svg?branch=master&event=push)](https://github.com/owner/nonebot-plugin-template/actions/workflows/ci.yml)
 [![publish](https://github.com/owner/nonebot-plugin-template/actions/workflows/pypi-publish.yml/badge.svg)](https://github.com/owner/nonebot-plugin-template/actions/workflows/pypi-publish.yml)
 
 </div>
 
-这是一个 nonebot2 插件项目的模板库, 你可以直接使用本模板创建你的 nonebot2 插件项目的仓库
-
-模板使用 [`uv`](https://github.com/astral-sh/uv) 进行依赖管理，使用 [`pyright`](https://github.com/microsoft/pyright) 进行代码检查
+> [!note]
+>
+> 这是一个 nonebot2 插件项目的模板库, 你可以直接使用本模板创建你的 nonebot2 插件项目的仓库
+>
+> 模板使用 [`uv`](https://github.com/astral-sh/uv) 进行依赖管理，使用 [ruff](https://github.com/astral-sh/ruff) 进行代码风格检查，使用 [`BasedPyright`](https://github.com/detachhead/basedpyright) 进行静态类型检查
 
 ### 模板使用
 
-- 点击仓库中的 "Use this template" 按钮, 输入仓库名与描述, 点击 " Create repository from template" 创建仓库
+- 点击仓库中的 "Use this template" 按钮, 输入仓库名与描述, 点击 "Create repository from template" 创建仓库
 - 全局替换 `owner` 为你的 Github 用户名
 - 全局替换 `nonebot-plugin-template` 为你的插件包名
 - 重命名 `nonebot_plugin_template` 文件夹为你的插件导入名
@@ -109,11 +109,11 @@ PORT=8080
 <summary>使用包管理器安装</summary>
 在 nonebot2 项目的插件目录下, 打开命令行, 根据你使用的包管理器, 输入相应的安装命令
 
-<details>
-<summary>pip</summary>
+<details open>
+<summary>uv</summary>
 
 ```sh
-pip install nonebot-plugin-template
+uv add nonebot-plugin-template
 ```
 
 </details>
@@ -142,10 +142,10 @@ conda install nonebot-plugin-template
 
 </details>
 <details>
-<summary>uv</summary>
+<summary>pip</summary>
 
 ```sh
-uv add nonebot-plugin-template
+pip install nonebot-plugin-template
 ```
 
 </details>

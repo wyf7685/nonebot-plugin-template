@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "nonebot_plugin_template/**"
+      - ".github/workflows/ci.yml"
+      - "pyproject.toml"
+      - "uv.lock"
+  pull_request:
+    paths:
+      - "nonebot_plugin_template/**"
+      - ".github/workflows/ci.yml"
+      - "pyproject.toml"
+      - "uv.lock"
+
+jobs:
+  ruff:
+    name: Ruff Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Ruff Lint
+        uses: astral-sh/ruff-action@v2
+        with:
+          src: >-
+            nonebot_plugin_template/
+
+  basedpyright:
+    name: BasedPyright Lint (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    needs: ruff
+    concurrency:
+      group: basedpyright-${{ github.ref }}-${{ matrix.python-version }}
+      cancel-in-progress: true
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: ./.github/actions/setup-python
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run BasedPyright
+        run: uvx basedpyright nonebot_plugin_template/
